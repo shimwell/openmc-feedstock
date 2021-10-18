@@ -55,6 +55,7 @@ requirements:
     - dagmc
   run:
     - hdf5
+    - moab 5.*
     - python
     - {{ pin_compatible('numpy') }}
     - h5py
@@ -63,7 +64,6 @@ requirements:
     - matplotlib-base
     - lxml
     - uncertainties
-    - moab 5.*
     - dagmc
 
 test:
