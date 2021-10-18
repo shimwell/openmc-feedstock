@@ -26,9 +26,12 @@ source:
   - url: https://github.com/fmtlib/fmt/archive/65ac626c5856f5aad1f1542e79407a6714357043.tar.gz
     sha256: 5a2ddaa029977d64783a0abfa6e3f154fad6954b7622199fcbcd845918f40058
     folder: vendor/fmt
+  - url: https://github.com/svalinn/DAGMC/archive/3fd335ea3f4360aa6043b30371795ade6ec9919c.tar.gz
+    sha256: 51b798fd69261d0db9c78bfbdca818765903eefe6122e4325cff8539d7daf332
+    folder: vendor/dagmc
 
 build:
-  number: 2
+  number: 3
   skip: true  # [win]
   skip: true  # [py<35]
   detect_binary_files_with_prefix: true
@@ -41,6 +44,9 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - hdf5
+    - moab 5.*
+    - libblas
+    - liblapack
     - git
     - setuptools
     - pip
@@ -59,11 +65,13 @@ requirements:
     - matplotlib-base
     - lxml
     - uncertainties
+    - moab 5.*
 
 test:
   commands:
     - test -f "${PREFIX}/bin/openmc"
     - openmc --version
+    - make_watertight --help
   imports:
     - openmc
     - openmc.data
