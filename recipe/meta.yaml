@@ -41,6 +41,9 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - hdf5
+    - moab 5.*
+    - libblas
+    - liblapack
     - git
     - setuptools
     - pip
@@ -49,6 +52,7 @@ requirements:
     - matplotlib-base
     - h5py
     - python
+    - dagmc
   run:
     - hdf5
     - python
@@ -59,11 +63,14 @@ requirements:
     - matplotlib-base
     - lxml
     - uncertainties
+    - moab 5.*
+    - dagmc
 
 test:
   commands:
     - test -f "${PREFIX}/bin/openmc"
     - openmc --version
+    - make_watertight --help
   imports:
     - openmc
     - openmc.data
