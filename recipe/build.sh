@@ -5,7 +5,7 @@ set -e
 export CONFIGURE_ARGS=""
 
 if [[ -n "$dagmc" && "$dagmc" != "nodagmc" ]]; then
-  export CONFIGURE_ARGS="-Ddagmc=ON ${CONFIGURE_ARGS}"
+  export CONFIGURE_ARGS="-OPENMC_USE_DAGMC=ON ${CONFIGURE_ARGS}"
 fi
 
 # Build and install executable
